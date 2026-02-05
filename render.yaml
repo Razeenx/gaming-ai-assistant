@@ -25,7 +25,3 @@ services:
     envVars:
       - key: VITE_API_URL
         value: https://gaming-ai-backend.onrender.com
-    routes:
-      - type: rewrite
-        source: /api/*
-        destination: https://gaming-ai-backend.onrender.com/api/*
