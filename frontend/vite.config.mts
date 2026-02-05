@@ -8,6 +8,7 @@ export default defineConfig({
   },
   preview: {
     port: 3000,
+    allowedHosts: ["gaming-ai-frontend.onrender.com"],
   },
 });
 
