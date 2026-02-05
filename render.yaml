@@ -4,20 +4,28 @@ services:
     name: gaming-ai-backend
     env: python
     plan: free
+    region: oregon
     buildCommand: pip install -r requirements.txt
-    startCommand: python main.py
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port 8000
     envVars:
       - key: GROQ_API_KEY
-        value: your_groq_api_key_here
+        sync: false
+      - key: PYTHONUNBUFFERED
+        value: "1"
     healthCheckPath: /health
+    healthCheckInterval: 60
 
   # Фронтенд сервис  
   - type: web
     name: gaming-ai-frontend
-    env: static
+    env: node
     plan: free
+    region: oregon
     buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: frontend/dist
+    startCommand: npm run preview -- --host 0.0.0.0 --port 3000
+    envVars:
+      - key: VITE_API_URL
+        value: https://gaming-ai-backend.onrender.com
     routes:
       - type: rewrite
         source: /api/*
