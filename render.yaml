@@ -21,7 +21,7 @@ services:
     plan: free
     region: oregon
     buildCommand: cd frontend && npm install && npm run build
-    startCommand: npm run preview -- --host 0.0.0.0 --port 3000
+    startCommand: cd frontend && npm run preview -- --host 0.0.0.0 --port 3000
     envVars:
       - key: VITE_API_URL
         value: https://gaming-ai-backend.onrender.com
