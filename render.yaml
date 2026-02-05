@@ -13,7 +13,6 @@ services:
       - key: PYTHONUNBUFFERED
         value: "1"
     healthCheckPath: /health
-    healthCheckInterval: 60
 
   # Фронтенд сервис  
   - type: web
